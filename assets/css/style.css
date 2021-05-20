@@ -1,0 +1,24 @@
+body {
+    background-color: #FBFBFD;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    margin-top:6%;
+    height: 1000px;
+    width:100%;
+
+    
+}
+.btn {
+    font-family: monospace;
+    color: #FBFBFD;
+    font-size:3vh;
+    background-color: #EB583A;
+    border-radius: 15px;
+    border: none;
+    
+}
