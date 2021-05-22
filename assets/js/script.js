@@ -3,6 +3,20 @@ var questionEl = document.getElementById('question')
 var answerButtonsEl = document.getElementById('answer-buttons')
 var startButton = document.getElementById('start-btn')
 var nextButton = document.getElementById('next-btn')
+// Timer
+ var timer = 1;
+ let time = timer * 60;
+ var countdoenEl = document.getElementById('countdown');
+ setInterval(updateCountdown, 1000);
+ function updateCountdown() {
+     var minutes = Math.floor(time / 60);
+     let seconds = time % 60;
+     seconds = seconds < 1 ? '0' + seconds : seconds;
+     countdoenEl.innerHTML = `${minutes}: ${seconds}`;
+     time--;
+     time =time < 0 ? 0: time
+
+    }
 // Making questions random
 let randomQuestions, currentQuestionIndex
 startButton.addEventListener('click', startGame)
