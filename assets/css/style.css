@@ -21,6 +21,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 5%;
+   margin: 50px;
    
 }
 .container2 {
@@ -63,8 +64,11 @@ body {
     display: none;
 }
 .correct {
-background-color: white;
+background-color: aquamarine;
 }
 .wrong {
-background-color: #000000;
+   background-color: tomato;
+}
+.white {
+    background-color: #FBFBFD;
 }

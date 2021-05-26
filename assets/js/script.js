@@ -3,20 +3,23 @@ var questionEl = document.getElementById('question')
 var answerButtonsEl = document.getElementById('answer-buttons')
 var startButton = document.getElementById('start-btn')
 var nextButton = document.getElementById('next-btn')
+
 // Timer
- var timer = 1;
- let time = timer * 60;
+ let time = 59;
  var countdoenEl = document.getElementById('countdown');
- setInterval(updateCountdown, 1000);
  function updateCountdown() {
      var minutes = Math.floor(time / 60);
      let seconds = time % 60;
      seconds = seconds < 1 ? '0' + seconds : seconds;
      countdoenEl.innerHTML = `${minutes}: ${seconds}`;
      time--;
-     time =time < 0 ? 0: time
-
+     time = time < 0 ? 0: time;
     }
+function minusSeconds() {
+    return time - 5;
+  
+    // console.log(time);
+}
 // Making questions random
 let randomQuestions, currentQuestionIndex
 startButton.addEventListener('click', startGame)
@@ -31,6 +34,7 @@ function startGame() {
   currentQuestionIndex = 0
   questionBoxEl.classList.remove('hide')
   setNextQuestion()
+  setInterval(updateCountdown, 1000);
 }
 //Setting up questions
 function setNextQuestion() {
@@ -55,12 +59,14 @@ function resetState() {
   nextButton.classList.add('hide')
   while (answerButtonsEl.firstChild) {
     answerButtonsEl.removeChild(answerButtonsEl.firstChild)
+  
   }
 }
+//Answers 
 function selectAnswer(e) {
-  const selectedButton = e.target
-  const correct = selectedButton.dataset.correct
-  setStatusClass(document.body, correct)
+  var selectedButton = e.target;
+  var correct = selectedButton.dataset.correct;
+  setStatusClass(document.body, correct);
   Array.from(answerButtonsEl.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
@@ -71,20 +77,27 @@ function selectAnswer(e) {
     startButton.classList.remove('hide')
   }
 }
+//Righ or Wrong Answer
 function setStatusClass(element, correct) {
   clearStatusClass(element)
+  element.classList.add('start')
   if (correct) {
     element.classList.add('correct')
   } else {
     element.classList.add('wrong')
+    minusSeconds()
   }
 }
 function clearStatusClass(element) {
   element.classList.remove('correct')
   element.classList.remove('wrong')
 }
+// Submit Results
+function submitScore(){
+    let userScore = submitScoreEl.value.trim();
+}
 //Quiz questions
-const questions = [
+var questions = [
   {
     question: 'Which of the following is not Javascript frameworks or libraries?',
     answers: [
@@ -175,95 +188,95 @@ const questions = [
       { text: 'All of the above', correct: true }
     ]
   },
-  {
-    question: 'What does javascript use instead of == and !=?',
-    answers: [
-      { text: 'It uses bitwise checking', correct: false },
-      { text: 'it uses === and !== instead', correct: true },
-      { text: 'It uses equals () and notequals() instead', correct: false },
-      { text: 'It uses equalto()', correct: false }
-    ]
-  },
-  {
-    question: 'What should appear at the very end of your JavaScript?',
-    answers: [
-      { text: '</script>', correct: true },
-      { text: '<script>', correct: false },
-      { text: '</script language= javascript>', correct: false },
-      { text: 'All of the above', correct: false }
-    ]
-  },
-  {
-    question: 'Javascript string using double quotes is exactly the same as a string using single quotes?',
-    answers: [
-      { text: 'True', correct: true },
-      { text: 'False', correct: false },
-      { text: 'Maybe', correct: false },
-      { text: 'It does not matter', correct: false }
-    ]
-  },
-  {
-    question: 'Which of the following are errors in JavaScript?',
-    answers: [
-      { text: '<Load time errors', correct: false },
-      { text: '<Run time errors', correct: true },
-      { text: 'Logical errors', correct: false },
-      { text: 'Data errors', correct: false }
-    ]
-  },
-  {
-    question: 'What are the two basic groups of data types in JavaScript?',
-    answers: [
-      { text: 'Primitive', correct: false },
-      { text: 'Reference types', correct: false },
-      { text: 'All of the above', correct: true },
-      { text: 'None of the above', correct: false }
-    ]
-  },
-  {
-    question: 'What is a definition of an undefined value in JavaScript?',
-    answers: [
-      { text: 'Variable used in the code does not exist', correct: false },
-      { text: 'Variable is not assigned to any value', correct: false },
-      { text: 'Property does not exist', correct: false },
-      { text: 'All of the above', correct: true }
-    ]
-  },
-  {
-    question: 'Which of them is not the looping structures in JavaScript?',
-    answers: [
-      { text: 'for', correct: false },
-      { text: 'while', correct: true },
-      { text: 'forwhich', correct: false },
-      { text: 'dowhile', correct: false }
-    ]
-  },
-  {
-    question: 'How do we define the term Thread?',
-    answers: [
-      { text: 'Device that controls input', correct: false },
-      { text: 'Variable that controls movement', correct: false },
-      { text: 'Controlled execution of applications', correct: true },
-      { text: 'None of the above', correct: false }
-    ]
-  },
-  {
-    question: 'Among the keywords below, which one is not a statement?',
-    answers: [
-      { text: 'If', correct: false },
-      { text: 'With', correct: false },
-      { text: 'Debugger', correct: false },
-      { text: 'Use Strict', correct: true }
-    ]
-  },
-  {
-    question: 'Which symbol is used for comments in Javascript?',
-    answers: [
-      { text: '//', correct: true },
-      { text: '--', correct: false },
-      { text: '/*', correct: false },
-      { text: '!!', correct: false }
-    ]
-  },
+//   {
+//     question: 'What does javascript use instead of == and !=?',
+//     answers: [
+//       { text: 'It uses bitwise checking', correct: false },
+//       { text: 'it uses === and !== instead', correct: true },
+//       { text: 'It uses equals () and notequals() instead', correct: false },
+//       { text: 'It uses equalto()', correct: false }
+//     ]
+//   },
+//   {
+//     question: 'What should appear at the very end of your JavaScript?',
+//     answers: [
+//       { text: '</script>', correct: true },
+//       { text: '<script>', correct: false },
+//       { text: '</script language= javascript>', correct: false },
+//       { text: 'All of the above', correct: false }
+//     ]
+//   },
+//   {
+//     question: 'Javascript string using double quotes is exactly the same as a string using single quotes?',
+//     answers: [
+//       { text: 'True', correct: true },
+//       { text: 'False', correct: false },
+//       { text: 'Maybe', correct: false },
+//       { text: 'It does not matter', correct: false }
+//     ]
+//   },
+//   {
+//     question: 'Which of the following are errors in JavaScript?',
+//     answers: [
+//       { text: '<Load time errors', correct: false },
+//       { text: '<Run time errors', correct: true },
+//       { text: 'Logical errors', correct: false },
+//       { text: 'Data errors', correct: false }
+//     ]
+//   },
+//   {
+//     question: 'What are the two basic groups of data types in JavaScript?',
+//     answers: [
+//       { text: 'Primitive', correct: false },
+//       { text: 'Reference types', correct: false },
+//       { text: 'All of the above', correct: true },
+//       { text: 'None of the above', correct: false }
+//     ]
+//   },
+//   {
+//     question: 'What is a definition of an undefined value in JavaScript?',
+//     answers: [
+//       { text: 'Variable used in the code does not exist', correct: false },
+//       { text: 'Variable is not assigned to any value', correct: false },
+//       { text: 'Property does not exist', correct: false },
+//       { text: 'All of the above', correct: true }
+//     ]
+//   },
+//   {
+//     question: 'Which of them is not the looping structures in JavaScript?',
+//     answers: [
+//       { text: 'for', correct: false },
+//       { text: 'while', correct: true },
+//       { text: 'forwhich', correct: false },
+//       { text: 'dowhile', correct: false }
+//     ]
+//   },
+//   {
+//     question: 'How do we define the term Thread?',
+//     answers: [
+//       { text: 'Device that controls input', correct: false },
+//       { text: 'Variable that controls movement', correct: false },
+//       { text: 'Controlled execution of applications', correct: true },
+//       { text: 'None of the above', correct: false }
+//     ]
+//   },
+//   {
+//     question: 'Among the keywords below, which one is not a statement?',
+//     answers: [
+//       { text: 'If', correct: false },
+//       { text: 'With', correct: false },
+//       { text: 'Debugger', correct: false },
+//       { text: 'Use Strict', correct: true }
+//     ]
+//   },
+//   {
+//     question: 'Which symbol is used for comments in Javascript?',
+//     answers: [
+//       { text: '//', correct: true },
+//       { text: '--', correct: false },
+//       { text: '/*', correct: false },
+//       { text: '!!', correct: false }
+//     ]
+//   },
   
 ]
