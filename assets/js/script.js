@@ -79,6 +79,7 @@ function selectAnswer(e) {
     nextButton.classList.remove("hide");
   } else {
     startButton.innerText = "Restart";
+    
     startButton.onclick = ()=>{
       window.location.reload(); 
     }
@@ -99,6 +100,7 @@ function clearStatusClass(element) {
   element.classList.remove("correct");
   element.classList.remove("wrong");
 }
+
 //Quiz questions
 var questions = [
   {
@@ -210,43 +212,43 @@ var questions = [
       { text: "All of the above", correct: true },
     ],
   },
-  //   {
-  //     question: 'What does javascript use instead of == and !=?',
-  //     answers: [
-  //       { text: 'It uses bitwise checking', correct: false },
-  //       { text: 'it uses === and !== instead', correct: true },
-  //       { text: 'It uses equals () and notequals() instead', correct: false },
-  //       { text: 'It uses equalto()', correct: false }
-  //     ]
-  //   },
-  //   {
-  //     question: 'What should appear at the very end of your JavaScript?',
-  //     answers: [
-  //       { text: '</script>', correct: true },
-  //       { text: '<script>', correct: false },
-  //       { text: '</script language= javascript>', correct: false },
-  //       { text: 'All of the above', correct: false }
-  //     ]
-  //   },
-  //   {
-  //     question: 'Javascript string using double quotes is exactly the same as a string using single quotes?',
-  //     answers: [
-  //       { text: 'True', correct: true },
-  //       { text: 'False', correct: false },
-  //       { text: 'Maybe', correct: false },
-  //       { text: 'It does not matter', correct: false }
-  //     ]
-  //   },
-  //   {
-  //     question: 'Which of the following are errors in JavaScript?',
-  //     answers: [
-  //       { text: '<Load time errors', correct: false },
-  //       { text: '<Run time errors', correct: true },
-  //       { text: 'Logical errors', correct: false },
-  //       { text: 'Data errors', correct: false }
-  //     ]
-  //   },
-  //   {
+    {
+      question: 'What does javascript use instead of == and !=?',
+      answers: [
+        { text: 'It uses bitwise checking', correct: false },
+        { text: 'it uses === and !== instead', correct: true },
+        { text: 'It uses equals () and notequals() instead', correct: false },
+        { text: 'It uses equalto()', correct: false }
+      ]
+    },
+    {
+      question: 'What should appear at the very end of your JavaScript?',
+      answers: [
+        { text: '</script>', correct: true },
+        { text: '<script>', correct: false },
+        { text: '</script language= javascript>', correct: false },
+        { text: 'All of the above', correct: false }
+      ]
+    },
+    {
+      question: 'Javascript string using double quotes is exactly the same as a string using single quotes?',
+      answers: [
+        { text: 'True', correct: true },
+        { text: 'False', correct: false },
+        { text: 'Maybe', correct: false },
+        { text: 'It does not matter', correct: false }
+      ]
+    },
+    {
+      question: 'Which of the following are errors in JavaScript?',
+      answers: [
+        { text: '<Load time errors', correct: false },
+        { text: '<Run time errors', correct: true },
+        { text: 'Logical errors', correct: false },
+        { text: 'Data errors', correct: false }
+      ]
+    },
+    {
   //     question: 'What are the two basic groups of data types in JavaScript?',
   //     answers: [
   //       { text: 'Primitive', correct: false },
