@@ -79,6 +79,9 @@ function selectAnswer(e) {
     nextButton.classList.remove("hide");
   } else {
     startButton.innerText = "Restart";
+    startButton.onclick = ()=>{
+      window.location.reload(); 
+    }
     startButton.classList.remove("hide");
   }
 }
@@ -95,10 +98,6 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element) {
   element.classList.remove("correct");
   element.classList.remove("wrong");
-}
-// Submit Results
-function submitScore() {
-  let userScore = submitScoreEl.value.trim();
 }
 //Quiz questions
 var questions = [
